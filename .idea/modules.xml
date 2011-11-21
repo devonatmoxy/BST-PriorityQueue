@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/bst-priority-queue/bst-priority-queue.iml" filepath="$PROJECT_DIR$/bst-priority-queue/bst-priority-queue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/binary-search-tree/tree-lib.iml" filepath="$PROJECT_DIR$/binary-search-tree/tree-lib.iml" />
+    </modules>
+  </component>
+</project>
+

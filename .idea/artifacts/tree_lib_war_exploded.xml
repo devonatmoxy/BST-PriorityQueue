@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="tree-lib:war exploded">
+    <output-path>$PROJECT_DIR$/tree-lib/target/tree-lib-1.0</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="tree-lib/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="tree-lib" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: junit:junit:4.8.2" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
