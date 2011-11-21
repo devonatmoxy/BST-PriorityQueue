@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="tree-lib:war">
-    <output-path>$PROJECT_DIR$/tree-lib/target</output-path>
-    <root id="archive" name="tree-lib-1.0.war">
-      <element id="artifact" artifact-name="tree-lib:war exploded" />
-    </root>
-  </artifact>
-</component>

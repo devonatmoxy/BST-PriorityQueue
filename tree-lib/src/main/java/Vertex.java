@@ -49,4 +49,22 @@ public class Vertex<T extends Comparable> {
     public void setParent(Vertex parent) {
         this.parent = parent;
     }
+
+    public void delete(){
+        if((this.getLeftChild() != null && this.getLeftChild().getValue() != null)
+                && (this.getRightChild() != null && this.getRightChild().getValue() != null)){
+                    throw new RuntimeException("A vertex cannot delete itself if it has two children.");
+        }
+
+        if(this.getRightChild() != null && this.getRightChild().getValue() != null){
+                this.setValue((T) this.getRightChild().getValue());
+                this.getRightChild().setValue(null);
+        } else if(this.getLeftChild() != null && this.getLeftChild().getValue() != null){
+                this.setValue((T) this.getLeftChild().getValue());
+                this.getLeftChild().setValue(null);
+        } else {
+            this.setValue(null);
+        }
+        
+    }
 }

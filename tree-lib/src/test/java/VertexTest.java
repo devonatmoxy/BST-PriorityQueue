@@ -41,4 +41,45 @@ public class VertexTest {
         assertEquals(rightChild.getParent(), parent);
         assertEquals(leftChild.getParent(), parent);
     }
+
+    @Test
+    public void deleteTest(){
+        Vertex<Integer> root = new Vertex<Integer>(24);
+        Vertex<Integer> firstLeftChild = new Vertex<Integer>(15);
+        Vertex<Integer> firstRightChild = new Vertex<Integer>(35);
+        Vertex<Integer> secondLeftChild = new Vertex<Integer>(11);
+        Vertex<Integer> secondRightChild = new Vertex<Integer>(55);
+
+        root.setLeftChild(firstLeftChild);
+        firstLeftChild.setParent(root);
+        root.setRightChild(firstRightChild);
+        firstRightChild.setParent(root);
+        secondLeftChild.setParent(firstLeftChild);
+        firstLeftChild.setLeftChild(secondLeftChild);
+        secondRightChild.setParent(firstRightChild);
+        firstRightChild.setRightChild(secondRightChild);
+
+        firstRightChild.delete();
+
+        assertEquals(55, root.getRightChild().getValue());
+
+        assertEquals(15, root.getLeftChild().getValue());
+        firstLeftChild.delete();
+
+        assertEquals(11, root.getLeftChild().getValue());
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void twoChildDeleteTest(){
+        Vertex<Integer> root = new Vertex<Integer>(24);
+        Vertex<Integer> firstLeftChild = new Vertex<Integer>(15);
+        Vertex<Integer> firstRightChild = new Vertex<Integer>(35);
+
+        root.setLeftChild(firstLeftChild);
+        firstLeftChild.setParent(root);
+        root.setRightChild(firstRightChild);
+        firstRightChild.setParent(root);
+
+        root.delete();
+    }
 }

@@ -61,46 +61,20 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
     public T remove() {
         T headVal = head.getValue();
         T newHeadValue = null;
-        if(head.getRightChild().getValue() != null)
-            newHeadValue = remove(head.getRightChild());
-        else if(head.getLeftChild().getValue() != null)
-            newHeadValue = remove(head.getLeftChild());
+        if(head.getRightChild().getValue() != null) {
+            newHeadValue = (T) getFirstInorder((Vertex<T>) head.getRightChild()).getValue();
+            getFirstInorder(head.getRightChild()).delete();
+        }
+        else if(head.getLeftChild().getValue() != null){
+            newHeadValue = (T) getLastInorder((Vertex) head.getLeftChild()).getValue();
+            head = head.getLeftChild();
+        } else {
+
+        }
         head.setValue(newHeadValue);
         return headVal;
     }
 
-    private T remove(Vertex<T> v) {
-        Vertex<T> inorder = null;
-        T inorderValue = null;
-        if(v.getValue().compareTo(head.getValue()) > 0){
-            inorder = getFirstInorder(v);
-            inorderValue = inorder.getValue();
-            if(inorder.getRightChild() != null){
-                inorder.setValue((T) inorder.getRightChild().getValue());
-                inorder.getRightChild().setValue(null);
-            }
-        } else {
-            inorder = getLastInorder(v);
-            inorderValue = inorder.getValue();
-            if(inorder.getLeftChild() != null){
-                inorder.setValue((T)inorder.getLeftChild().getValue());
-                inorder.getLeftChild().setValue(null);
-            }
-        }
-        return inorderValue;
-    }
-
-    private T removeLeft(Vertex<T> v){
-        Vertex<T> inorder = null;
-        T inorderValue = null;
-            inorder = getLastInorder(v);
-            inorderValue = inorder.getValue();
-            if(inorder.getLeftChild() != null){
-                inorder.getLeftChild().setParent(v);
-                v.setLeftChild(inorder.getLeftChild());
-            }
-        return inorderValue;
-    }
     public Vertex getHead(){
         return this.head;
     }
